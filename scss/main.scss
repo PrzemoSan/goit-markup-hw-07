@@ -1,0 +1,375 @@
+@import"./variables";
+@mixin bordered($color){
+   border: 1px solid $color
+}
+@mixin anime{
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1)
+}
+@mixin centering($a,$b,$c){
+    justify-content: $a;
+    text-align: $b;
+    align-items: $c;
+}
+
+.request{
+    background-color: $bg-request-color;
+    width: 1600px;
+    height: 600px;
+    margin: 0 auto;
+    background-image: url(../images/img16.jpg);
+    &__title{
+        color: $white-color;
+        line-height: $standard-line-height;
+        letter-spacing: 0.06;
+        font-size: 44px;
+        padding: 200px 452px 0 452px;
+        margin-bottom: 40px;
+        margin-top: 0;
+        text-align: center;
+    }
+    &__button{
+        background-color: $blue-color;
+        line-height: 1.87;
+        color: white;
+        letter-spacing: 0.06;
+        padding: 10px 41px;
+        margin: 40px 700px 200px;
+        justify-content: center;
+        white-space: nowrap;
+        border: none;
+        cursor: pointer;
+    }
+}
+.backdrop{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    top: 0;
+    left: 0;
+    opacity: 1;
+    transition-duration: 1s;
+}
+
+.is-hidden{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.modal{
+    position: absolute;
+    display: flex;
+    height: 581px;
+    width: 528px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    top: 15%;
+    left: 28.5%;
+}
+.form{
+    display: block;
+    @include centering(center,left ,none );
+    height: 581px;
+    width: 528px;
+
+    &__title{
+        color: $black-color;
+        width: 448px;
+        height: 23px;
+        font-weight: 700;
+        size: 20px;
+        line-height: 1.17;
+        padding: 40px 40px 12px 40px;
+        margin: 0px;
+        text-align: center;
+    }
+    &__label{
+        position: relative;
+        display: block;
+        margin: 0px 40px 10px 40px;
+    }
+    &__label--categ{
+        text-align: left;
+    }
+    &__label--style{
+        @include bordered(rgba(33, 33, 33, 0.2));
+        border-radius: 4px; 
+        width: 406px;
+        height: 40px;
+        padding-left: 42px;
+    }
+    &__label--icon{
+        position: absolute;
+        top: 35px;
+        left: 15px;
+        fill: $black-color;
+    }
+    &__rules{
+        position: relative;
+        display: block;
+        margin-top: 0px;
+        margin-left: 40px;
+        white-space: nowrap;
+        width: 397px;
+        height: 24px;
+        size: 14px;
+        cursor: pointer;
+    }
+    &__rules--label{
+        position: absolute;
+        padding-left: 25px;
+    }
+    &__rules--label a{
+        color:$blue-color
+    }
+    &__rules--input{
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        position: relative;
+        padding-left: 17px;
+    }
+    &__rules--icon{
+        @include bordered($black-color);
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+    &__rules--input:checked + &__rules--icon{
+        background-color: $blue-color;
+        @include bordered($blue-color);
+        fill:$blue-color;
+        overflow: hidden;
+        border-radius: 2px;
+        @include anime();
+    }
+    &__rules--yes{
+        width: 11px;
+        height: 8px;
+    }
+    &__label--style:focus + &__label--icon{
+        fill:$blue-color;
+        @include anime();
+    }
+    &__label--comment{
+        @include bordered($black-color);
+        border-radius: 4px; 
+        width: 448px;
+        height: 120px;
+        resize: none;
+    }
+    &__label--style:focus-within, &__label--comment:focus-within{
+        @include bordered($blue-color);
+        @include anime;
+        fill: $blue-color;
+        border-radius: 4px;
+        outline: none;
+    }
+    &__button{
+        display: block;
+        width: 200px;
+        height: 50px;
+        color: $white-color;
+        background-color: $blue-color;
+        cursor: pointer;
+        text-align: center;
+        justify-content: center;
+        border: #2196F3;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+        border-radius: 4px;
+        margin: 30px auto;
+    }
+    &__button--send{
+        font-weight: 700;
+        size: 16px;
+        width: 48px;
+        height: 30px;
+    }
+    &__label--close{
+        position: absolute;
+        width: 30px;
+        height:30px;
+        top: 8px;
+        right: 8px;
+        @include bordered(rgba(0, 0, 0, 0.1));
+        border-radius: 50%;
+        cursor: pointer;
+        background-color: $white-color
+    }
+    &__label--close:hover{
+        background-color: $blue-color;
+        @include anime();
+    }
+}
+.about{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 30px;
+    margin: 0 auto;
+    padding: 94px 0;
+
+    &__image, &__image--icon{
+        justify-content: center;
+        align-items: center;
+    }
+    &__image--icon{
+        background-color: $white-color;
+        border-radius: 4px;
+        width: 270px;
+        height: 120px
+    }
+    &__title{
+        background-color: $white-color;
+        line-height: 1.14;
+        font-weight: 700px;
+        letter-spacing: $standard-letter-spacing;
+        font-size: 14px;
+    }
+    &__description{
+        color: $gray-color;
+        line-height: 1.71;
+        font-weight: 400px;
+        letter-spacing: $standard-letter-spacing;
+        font-size: 14px;
+        width: 270px;
+    }
+}
+
+.job__title,
+.team__title,
+.partners__title {
+    color:$black-color;
+    line-height: 1.16;  
+    letter-spacing: $standard-letter-spacing;
+    font-size: 36px;
+    font-weight: 700px;
+    text-align: center;
+}
+.job{
+    margin: 0 auto;
+    padding-bottom: 94px;
+    &__list{
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 30px;
+        position: relative;
+        padding-left: 0px;
+    }
+    &__list--photo{
+        display:block;
+    }
+    &__list--label{
+        position: absolute;
+        text-align: center;
+        width: 370px;
+        height: 70px;
+        background-color: rgba(47, 48, 58, 0.8);
+        color: $white-color;
+        margin: 0;
+        bottom:0;
+        font-size: 14px;
+        font-weight: 700;
+    }
+    &__list--label--position{
+        position: absolute;
+        display: block;
+        width: 182px;
+        height: 16px;
+        padding: 27px 94px;
+    }
+}
+.team{
+    background-color: $gb-team-color;
+    margin: 0 auto;
+    &__list{
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 30px;
+        padding-left: 0px;
+    }
+    &__list--photo{
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+        border-radius: 0px 0px 4px 4px;
+        background-color: $white-color;
+        margin: 0px;
+    }
+    &__list--name{
+        color:$black-color;
+        line-height: 1.17;
+        font-weight: 500px;
+        font-size:16px;
+        letter-spacing: $standard-letter-spacing;
+        text-align: center;
+        margin-top: 30px;
+    }
+    &__list--position{
+        color: $gray-color;
+        line-height: 1.17;
+        font-weight: 400px;
+        font-size: 14px;
+        letter-spacing: $standard-letter-spacing;
+        display: block;
+        padding-top: 10px;
+    }
+}
+.social{
+    padding-top: 16px;
+    padding-bottom: 30px;
+    &__list{
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        padding-left: 0px;
+        @include centering(center,center,none)
+    }
+    &__list--icon{
+        fill: #afb1ba;
+        border-radius: 50%;
+        background-color: $white-color;
+        height: 44px;
+    }
+    &__list--icon:hover{
+        border-radius: 50%;
+        background-color: $blue-color;
+        fill: $white-color;
+        cursor: pointer;
+        @include anime();
+    }
+}
+.partners{
+    width: auto;
+    &__list{
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 30px;
+        padding-left: 0px;
+    }
+    &__logo{
+        @include bordered($brightgray-color);
+        border-radius: 4px;
+        width: 170px;
+        height: 92px;
+        object-fit: contain;
+        fill: $brightgray-color;
+    }
+    &__logo:hover{
+        @include bordered($blue-color);
+        fill: $blue-color;
+        cursor: pointer;
+        @include anime();
+    }
+    &__logo--size{
+        width: 106px;
+        height: 60px;
+    }
+}

@@ -1,0 +1,62 @@
+@import"./variables";
+@mixin bordered($color){
+   border: 1px solid $color
+}
+@mixin anime{
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1)
+}
+@mixin centering($a,$b,$c){
+    justify-content: $a;
+    text-align: $b;
+    align-items: $c;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+
+    &__main--title{
+        line-height: $standard-line-height;
+        text-decoration: none;
+        color: $blue-color;
+        letter-spacing: $standard-letter-spacing;
+        font-size: 26px;
+        padding-top: 24px;
+        padding-left: 15px;
+        padding-bottom: 25px;
+        padding-right: 93px;
+    }
+    &__rest--tittle{
+        line-height: $standard-line-height;
+        color: $black-color;
+    }
+}
+.menu{
+    display: inline-flex;
+    list-style-type: none;
+    flex-direction: row;
+    margin-top: 32px;
+    font-size: 14px;
+    padding-left: 0px;
+
+    &__studio, &__portfolio, &__contacts{
+        color: $black-color;
+        line-height: $standard-line-height;
+        text-decoration: none;
+        letter-spacing: $standard-letter-spacing;
+        margin-right: 46px;
+        position: relative;
+
+    }
+    &__contacts{
+        margin-right: 320px;
+    }
+    &__studio:hover, &__portfolio:hover, &__contacts:hover{
+        color: $blue-color;
+        text-decoration: none;
+        cursor: pointer;
+        transition: 250ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
