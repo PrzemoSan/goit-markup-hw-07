@@ -1,0 +1,360 @@
+@import"./variables";
+
+@mixin bordered($color){
+   border: 1px solid $color
+}
+@mixin anime{
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1)
+}
+@mixin centering($a,$b,$c){
+    justify-content: $a;
+    text-align: $b;
+    align-items: $c;
+}
+.body {
+    font-family: 'Roboto','Raleway', sans-serif;
+    background: $white-color;
+    max-width: 1600px;
+}
+
+.container{
+    width: 1200px;
+}
+
+.section{
+    padding: 94px 0;
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+
+    &__main-title{
+        line-height: $standard-line-height;
+        text-decoration: none;
+        color: $blue-color;
+        letter-spacing: $standard-letter-spacing;
+        font-size: 26px;
+        padding-top: 24px;
+        padding-left: 15px;
+        padding-bottom: 25px;
+        padding-right: 93px;
+    }
+    &__rest-tittle{
+        line-height: $standard-line-height;
+        color: $black-color;
+    }
+}
+.menu{
+    display: inline-flex;
+    list-style-type: none;
+    flex-direction: row;
+    margin-top: 32px;
+    font-size: 14px;
+    padding-left: 0px;
+
+    &__studio, &__portfolio, &__contacts{
+        color: $black-color;
+        line-height: $standard-line-height;
+        text-decoration: none;
+        letter-spacing: $standard-letter-spacing;
+        margin-right: 46px;
+        position: relative;
+
+    }
+    &__contacts{
+        margin-right: 320px;
+    }
+    &__studio:hover, &__portfolio:hover, &__contacts:hover{
+        color: $blue-color;
+        text-decoration: none;
+        cursor: pointer;
+        transition: 250ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+.underscore::after{
+    position: absolute;
+    display: block;
+    top:28px;
+    content: '';
+    border-radius: 2px;
+    width: 100%;
+    height: 4px;
+    background-color: $blue-color;
+    cursor: unset;
+    pointer-events: none;
+}
+.contact{
+    display: inline-flex;
+    list-style-type: none;
+    flex-direction: row;
+    margin-top: 32px;
+    font-size: 14px;
+    padding-left: 0px;
+    &__email, &__phone{
+        color: $black-color;
+        line-height: 1.17;
+        text-decoration: none;
+        letter-spacing: 0.02;
+    }
+    &__email{
+        margin-right: 50px;
+    }
+    &__email-icon, &__phone-icon{
+        width: 16px;
+        height: 12px;
+        display: inline-flex;
+    }
+    &__email:hover, &__phone:hover, &__email--icon:hover, &__phone-icon:hover{
+        color: $blue-color;
+        text-decoration: none;
+        cursor: pointer;
+        @include anime();
+    }
+}
+.portfolio{
+    margin: 0 auto;
+    &__menu{
+        background-color: $white-color;
+        display: flex;
+        justify-content: center;
+        padding-bottom: 50px;
+        margin: 0;
+    }
+    &__nav{
+        display: flex;
+        flex-direction: row;
+        list-style-type: none;
+        padding: 6px 22px;
+        text-align: center;
+        gap: 8px;
+    }
+    &__nav-button{
+        color: $black-color;
+        background-color: $white-color;
+        text-decoration: none;
+        letter-spacing: $standard-letter-spacing;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        font-weight: 500;
+        line-height: 1.62;
+        width: 93px;
+        height: 38px;
+        background: #F5F4FA;
+        border-radius: 4px;
+    }
+    &_nav-button:hover{
+        color: $white-color;
+        background-color: $blue-color;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px #7e7676;
+        cursor: pointer;
+        @include anime();
+    }
+}
+.gallery{
+    display: flex;
+    gap: 30px;
+    &__list{
+        list-style-type: none;
+        text-decoration: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        padding-left: 0px;
+    }
+    &__img{
+        @include bordered($gallery-border-color);
+        margin: 0; 
+    }
+    &__overlay{
+        position: relative;
+        overflow: hidden;
+    }
+    &__overlay-box{
+        text-align: center;
+        position: absolute;
+        color: $white-color;
+        background-color:$blue-color 0,9;
+        width: 370px;
+        height: 294px;
+        top: 0;
+        margin: 0;
+        transform: translateY(110%);
+        transition: 400ms;
+        overflow: hidden;
+        border-radius: 4px;
+    }
+    &__img:hover, &__img:focus, 
+    &__img:hover &__overlay-box{
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+        cursor: pointer;
+        transform: translateY(0);
+        visibility: visible;
+    }
+    &__overlay-text{
+        width: 301px ;
+        font-size: 18px;
+        letter-spacing: 3%;
+        line-height: 1.55;
+        padding: 49px 45px 49px 24px;
+        margin: 0;
+    }
+    &__name{
+        line-height: 2;
+        font-weight: 700;
+        color: $black-color;
+        letter-spacing: 0.06;
+        padding: 20px 24px 4px 24px;
+    }
+    &__name-categories{
+        line-height: 1.87;
+        color: $gray-color;
+        font-weight: 400;
+        letter-spacing: $standard-letter-spacing;
+        display: block;
+    }
+}
+.footer{
+    background-color: $bg-footer-color;
+    &__section{
+        padding-top: 60px;
+        padding-left:215px;
+        padding-right: 215px;
+        padding-bottom: 60px;
+        display: flex;
+    }
+    &__title{
+        margin: 0px;
+    }
+    &__title-main{
+        line-height:  $standard-line-height;
+        letter-spacing: $standard-letter-spacing;
+        font-size: 26px;
+        margin-bottom: 20px;
+        width: 145px;
+        color: $blue-color;
+        text-decoration: none;
+    }
+    &__title-rest{
+        color: $white-color;
+    }
+    &__address{
+        color: $white-color;
+        line-height: 1.71;
+        font-weight: 400px;
+        letter-spacing: $standard-letter-spacing;
+        display: flex;
+        flex-direction: column;
+        padding-top: 20px;
+        padding-bottom: 9px;
+        width: 246px;
+    }
+    &__address-email, &__address-phone{
+        color: $white-color;
+        opacity: 60%;
+        line-height: 1.17;
+        font-weight: 400px;
+        text-decoration: none;
+        letter-spacing: $standard-letter-spacing;
+        width: 231px;
+    }
+    &__address-email{
+        padding-bottom: 9px;
+        padding-top: 9px;
+    }
+}
+.join__title,
+.newsletter__title{
+    font-weight: 700;
+    color: $white-color;
+    line-height: 1.17;
+    height: 16px;
+    padding: 0;
+    letter-spacing: $standard-letter-spacing;
+}
+.join{
+    list-style-type: none;
+    &__title{
+        width: 113px;
+        margin: 12px 0 20px 70px;
+    }
+    &__section{
+        display:flex;
+        padding: 0;
+        margin-left: 70px;
+    }
+    &__list{
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        margin: 0;
+        padding-left: 0px;
+    }
+    &__social{
+        background-color: $bg-social-icon;
+        border-radius: 50%;
+    }
+    &__social:hover{
+        background-color: $blue-color;
+        border-radius: 50%;
+        cursor: pointer;
+        @include anime();
+        height: 44px;
+    }
+}
+.newsletter{
+    list-style-type: none;
+    &__title{
+        width: 207px;
+        margin: 12px 578px 20px 78px;
+    }
+    &__label{
+        position: relative;
+        width: 358px;
+        padding-right: 0;
+    }
+    &__email, &__button{
+        @include bordered(rgba(255, 255, 255, 0.3));
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    &__email{
+        width: 358px;
+        height: 50px;
+        color: $white-color 0.6;
+        background-color: $darkgray;
+        padding-left: 16px;
+        margin: 0px 12px 0px 78px;
+    }
+    &__button{
+        position: absolute;
+        display: inline-flex;
+        width: 200px;
+        height: 50px;
+        background-color:$blue-color;
+        align-items: center;
+        margin-top: 3px;
+    }
+    &__button-text{
+        color: $white-color;
+        width: 82px;
+        height: 30px;
+        font-weight: 700;
+        letter-spacing: 0.06;
+        line-height: 1.88;
+        padding-left: 32px;
+    }
+    &__button-icon{
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        fill: $white-color;
+        padding-left:128px;
+    }
+}
